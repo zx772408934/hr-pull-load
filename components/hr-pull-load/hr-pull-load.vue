@@ -1,5 +1,5 @@
 <template>
-	<scroll-view scroll-y='true' :style="{height:height+'rpx'}" @scrolltolower='loadMore' :lower-threshold='lowerThreshold' @touchstart="doTouchStart" @touchend="doTouchEnd" @touchmove="doTouchMove">
+	<scroll-view scroll-y='true' :style="{height:height==-1?'100%':height+'rpx'}" @scrolltolower='loadMore' :lower-threshold='lowerThreshold' @touchstart="doTouchStart" @touchend="doTouchEnd" @touchmove="doTouchMove">
 		<!-- 下拉提示 -->
 		<view class="upDown" :style="{height: upDownTipsHeight+'px',maxHeight:maxHeight+'px'}" :class="isHeightChange?'heightAnimation':''">
 			<text class="arrow" :class="upDownTipsHeight>=pullHeight?'upArrow':''" v-if="!isAllowLoading&&upDownTipsHeight>20">↓</text>
@@ -52,7 +52,7 @@
 		props: {
 			height:{
 				type:Number,
-				default :500
+				default :700
 			},
 			pullHeight: {
 				type: Number,
@@ -70,9 +70,9 @@
 				type: Number,
 				default: 20
 			},
-			isSingle:{
+			isTab:{
 				type: Boolean,
-				default: true
+				default: false
 			}
 		},
 		created() {
@@ -115,7 +115,7 @@
 				if(this.isInterval){
 					this.isInterval = false;
 					//这里判断横向滑动的距离差，主要是为了防止一个页面多个该组件时（横向tab切换）,出现的误操作
-					if(Math.abs(this.startX-e.touches[0].clientX)>5&&!this.isSingle){
+					if(Math.abs(this.startX-e.touches[0].clientX)>5&&this.isTab){
 						this.isAllowPullDown = false;
 					}
 					else{

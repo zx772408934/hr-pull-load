@@ -1,5 +1,5 @@
 <template>
-	<!-- @touchmove.stop.prevent是为了阻止手机默认的滑动事件，建议加上 -->
+	<!-- @touchmove.stop.prevent是为了阻止手机默认的滑动事件 -->
 	<view class="example" @touchmove.stop.prevent>
 		<hr-pull-load
 		 @refresh='refresh' 
@@ -7,10 +7,11 @@
 		 :height='700' 
 		 :pullHeight='50' 
 		 :maxHeight='100' 
-		 :bottomTips='bottomTips' 
-		 :isSingle='true' 
 		 :lowerThreshold='20'
+		 :bottomTips='bottomTips' 
+		 :isTab='false' 
 		 ref='hrPullLoad'>
+		 <!-- 插入自己的数据-->
 			<view class="list" v-for="(item,index) in exampleInfo" :key='index'>
 				<view class="left">
 					<text class="num">99</text>
@@ -44,17 +45,17 @@
 			hrPullLoad
 		},
 		onLoad(){
-			uni.showLoading({
-				title:'加载中...',
-			})
 			this.getExampleData(1);
 		},
 		methods:{
-			/* type 1代表下拉刷新 2代表加载更多 */
+			/* 调用接口从后台获取数据，这里的逻辑处理大家可以参考，具体的处理大家可以自定义，需要注意的是：
+			1.bottomTips用来控制触发加载更多时的提示
+			2.this.$refs.hrPullLoad.reSet()用来重置下拉刷新状态
+			*/
 			getExampleData(type){
-				/* 调用接口从后台获取数据 */
+				/* type 1代表下拉刷新 2代表加载更多 */
 				setTimeout(()=>{
-					uni.hideLoading();
+					/* 接口获取到的数据 */
 					let data = [1,2,3,4,5,6,7,8,9,10,11,12,13];
 					/* 拿到数据后的处理 */
 					if(data.length>0){
@@ -85,15 +86,15 @@
 					setTimeout(()=>{
 						this.$refs.hrPullLoad.reSet();
 					},300);
-				},1000);
+				},500);
 			},
-			//上拉加载更多
+			//自定义上拉加载更多
 			loadMore(){
 				this.currentPage++;
 				this.bottomTips = "loading";
 				this.getExampleData(2);
 			},
-			//下拉刷新
+			//自定义下拉刷新
 			refresh(){
 				this.currentPage = 1;
 				this.getExampleData(1);

@@ -10,7 +10,7 @@
 		 :lowerThreshold='20'
 		 :bottomTips='bottomTips' 
 		 :isTab='false' 
-		 :isAllowPull="false"
+		 :isAllowPull="true"
 		 ref='hrPullLoad'>
 		 <!-- 插入自己的数据-->
 			<view class="list" v-for="(item,index) in exampleInfo" :key='index'>
@@ -107,9 +107,9 @@
 <style lang="scss" scoped>
 	.example{
 		width: 100%;
-		background: rgb(241,241,241);
-		margin-top: 50rpx;
+		// margin-top: 50rpx;
 		// padding: 30rpx 0;
+		padding-top: 50rpx;
 		.list{
 			width: 100%;
 			padding: 24rpx 0rpx;
@@ -117,6 +117,7 @@
 			justify-content: space-between;
 			align-items: center;
 			font-size: 24rpx;
+			background: rgb(241,241,241);
 			border-bottom: 1px solid rgb(213, 213, 213);
 			>view{
 				flex: 1;

@@ -10,6 +10,7 @@
 		 :lowerThreshold='20'
 		 :bottomTips='bottomTips' 
 		 :isTab='false' 
+		 :isAllowPull="true"
 		 ref='hrPullLoad'>
 		 <!-- 插入自己的数据-->
 			<view class="list" v-for="(item,index) in exampleInfo" :key='index'>

@@ -73,6 +73,10 @@
 			isTab:{
 				type: Boolean,
 				default: false
+			},
+			isAllowPull:{
+				type: Boolean,
+				default: true
 			}
 		},
 		created() {
@@ -101,6 +105,9 @@
 		methods:{
 			//鼠标点击
 			doTouchStart(e){
+				if(!this.isAllowPull){
+					return;
+				}
 				this.isHeightChange = false;
 				this.isInterval = true;
 				this.startY = e.touches[0].clientY;
@@ -108,6 +115,9 @@
 			},
 			//鼠标移动
 			doTouchMove(e){
+				if(!this.isAllowPull){
+					return;
+				}
 				//滑动的距离
 				this.distanceY = e.touches[0].clientY - this.startY;
 				
@@ -144,6 +154,9 @@
 			},
 			//鼠标松开
 			doTouchEnd(e){
+				if(!this.isAllowPull){
+					return;
+				}
 				if(this.upDownTipsHeight>=this.pullHeight){
 					this.isAllowLoading = true;
 					this.upDownTips = '刷新中...';
@@ -163,6 +176,9 @@
 			},
 			//重置
 			reSet(){
+				if(!this.isAllowPull){
+					return;
+				}
 				this.isAllowLoading = false;
 				this.upDownTips = '';
 				this.upDownTipsHeight = 0;

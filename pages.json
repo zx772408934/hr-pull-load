@@ -5,6 +5,18 @@
 			"style": {
 				"navigationBarTitleText": "hr-pull-load"
 			}
+		},
+		{
+			"path": "pages/index/full",
+			"style": {
+				"navigationBarTitleText": "hr-pull-load"
+			}
+		},
+		{
+			"path": "pages/index/tab",
+			"style": {
+				"navigationBarTitleText": "hr-pull-load"
+			}
 		}
 	],
 	"globalStyle": {

@@ -14,4 +14,16 @@
 
 <style>
 	/*每个页面公共css */
+	
+	view,
+	scroll-view,
+	swiper,
+	button,
+	input,
+	textarea,
+	label,
+	navigator,
+	image {
+		box-sizing: border-box;
+	}
 </style>

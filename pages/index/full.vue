@@ -1,37 +1,36 @@
 <template>
 	<!-- @touchmove.stop.prevent是为了阻止手机默认的滑动事件 -->
 	<view class="example" @touchmove.stop.prevent>
-		<hr-pull-load
-		 @refresh='refresh' 
-		 @loadMore='loadMore' 
-		 :height='750' 
-		 :pullHeight='50' 
-		 :maxHeight='100' 
-		 :lowerThreshold='20'
-		 :bottomTips='bottomTips' 
-		 :isTab='false' 
-		 :isAllowPull="true"
-		 ref='hrPullLoad'>
-		 <!-- 插入自己的数据-->
-			<view class="list" v-for="(item,index) in exampleInfo" :key='index'>
-				<view class="left">
-					<text class="num">99</text>
-					<text class="time">00</text>
+		<view class="header">这是固定的头部</view>
+		<view class="content">
+			<hr-pull-load
+			 @refresh='refresh' 
+			 @loadMore='loadMore' 
+			 :height='-1' 
+			 :pullHeight='50' 
+			 :maxHeight='100' 
+			 :lowerThreshold='20'
+			 :bottomTips='bottomTips' 
+			 :isTab='false' 
+			 :isAllowPull="true"
+			 ref='hrPullLoad'>
+			 <!-- 插入自己的数据-->
+				<view class="list" v-for="(item,index) in exampleInfo" :key='index'>
+					<view class="left">
+						<text class="num">99</text>
+						<text class="time">00</text>
+					</view>
+					<view class="middle">
+						<text class="nickName">
+							派大星和海绵宝宝
+						</text>
+					</view>
+					<view class="right">
+						<text class="dName">1221</text>
+						<text class="rank">0127</text>
+					</view>
 				</view>
-				<view class="middle">
-					<text class="nickName">
-						派大星和海绵宝宝
-					</text>
-				</view>
-				<view class="right">
-					<text class="dName">1221</text>
-					<text class="rank">0127</text>
-				</view>
-			</view>
-		</hr-pull-load> 
-		<view class="examples">
-			<navigator url="./full">充满屏幕剩余高度</navigator>
-			<navigator url="./tab">多个tab切换</navigator>
+			</hr-pull-load> 
 		</view>
 	</view>
 </template>
@@ -111,9 +110,21 @@
 <style lang="scss" scoped>
 	.example{
 		width: 100%;
-		// margin-top: 50rpx;
-		// padding: 30rpx 0;
-		// padding-top: 50rpx;
+		.header{
+			height: 200rpx;
+			line-height: 200rpx;
+			text-align: center;
+			background-color: #dfdfdf;
+		}
+		.content{
+			//200rpx是头部的高度  44px是uni-app自带的nav高度，APP和H5的表现形式不一样，所以这里需要做条件编译
+			/* #ifdef APP-PLUS */
+			height: calc(100vh - 200rpx);
+			/* #endif */
+			/* #ifdef H5 */
+			height: calc(100vh - 200rpx - 44px);
+			/* #endif */
+		}
 		.list{
 			width: 100%;
 			padding: 24rpx 0rpx;
@@ -162,7 +173,7 @@
 			display: flex;
 			justify-content: space-around;
 			margin-top: 150rpx;
-			>navigator{
+			>view{
 				background-color: rgb(176, 176, 176);
 				padding: 20rpx;
 				border-radius: 15rpx;

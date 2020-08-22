@@ -125,7 +125,7 @@
 				if(this.isInterval){
 					this.isInterval = false;
 					//这里判断横向滑动的距离差，主要是为了防止一个页面多个该组件时（横向tab切换）,出现的误操作
-					if(Math.abs(this.startX-e.touches[0].clientX)>5&&this.isTab){
+					if(Math.abs(this.startX-e.touches[0].clientX)>10&&this.isTab){
 						this.isAllowPullDown = false;
 					}
 					else{

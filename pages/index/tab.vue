@@ -17,7 +17,7 @@
 				</view>
 			</view>
 		</view>
-		<!-- 多个tab切换的时候，注意插件的isTab属性， 它可以用来防止两个tab之间用手滑动时造成的误操作，但是会降低下拉刷新的灵敏度-->
+		<!-- 多个tab切换的时候，注意插件的isTab属性， 它可以用来防止两个tab之间用手滑动时造成的误操作-->
 		<swiper :current='showType-1' @change="onChange">
 			<swiper-item>
 				<tab1 ref='tab1'></tab1>

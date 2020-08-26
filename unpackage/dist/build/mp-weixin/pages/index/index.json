@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "hr-pull-load",
+  "usingComponents": {
+    "hr-pull-load": "/components/hr-pull-load/hr-pull-load"
+  }
+}

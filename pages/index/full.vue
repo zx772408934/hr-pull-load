@@ -124,6 +124,9 @@
 			/* #ifdef H5 */
 			height: calc(100vh - 200rpx - 44px);
 			/* #endif */
+			/* #ifdef MP-WEIXIN */
+			height: calc(100vh - 200rpx);
+			/* #endif */
 		}
 		.list{
 			width: 100%;

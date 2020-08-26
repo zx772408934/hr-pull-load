@@ -115,7 +115,11 @@
 			height: calc(100vh - 116rpx - 44px);
 			/* #endif */
 			
-			/* #ifndef H5*/
+			/* #ifdef APP-PLUS */
+			height: calc(100vh - 116rpx);
+			/* #endif */
+			
+			/* #ifdef MP-WEIXIN */
 			height: calc(100vh - 116rpx);
 			/* #endif */
 			background: #FFFFFF;
